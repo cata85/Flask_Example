@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Test Example</title>
+</head>
+
+<body>
+  {% if not user %}
+    <h1 id="login"><a href="/login">LOGIN</a></h1>
+    <p>NO USER LOGGED IN</p>
+  {% else %}
+    <p>{{ user }} LOGGED IN</p>
+	<p><a href="/logout">Logout</a></p>
+  {% endif %}
+<body>
+</html>
