@@ -3,7 +3,6 @@
 <head>
   <title>Login</title>
 </head>
-
 <body>
   <div id="login_info">
     <form action="/login" method="post">
@@ -13,10 +12,9 @@
       <input type="password" name="password_text" id="password_text">
       <br />
       <button type="submit">Login</button>
-	</form>
-    <form method="get" action="/">
-      <button type="submit">Back</button>
     </form>
   </div>
+
+  <div id="error_handle">{{ error }}</div>
 </body>
 </html>

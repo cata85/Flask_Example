@@ -32,3 +32,7 @@ def check_login(username, password):
     checker = c.execute('SELECT * FROM users WHERE username = (?) AND password = (?)',
                         (username, password)).fetchone()
     return checker is not None
+
+
+def compare_pass(pass1, pass2):
+    return pass1 == pass2

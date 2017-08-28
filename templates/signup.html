@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Sign Up</title>
+</head>
+<body>
+  <div id="Signup_info">
+    <form action="/signup" method="post">
+      <p id="username">Username:</p>
+      <input type="text" name="username_text" id="username_text">
+      <p id="password1">Password:</p>
+      <input type="password" name="password_one" id="password_one">
+      <p id="password2">Confirm Password</p>
+      <input type="password" name="password_two" id="password_two">
+      <br />
+      <button type="submit">Signup</button>
+    </form>
+  </div>
+
+  <div id="error_handle">{{ error }}</div>
+</body>
+</html>
