@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Settings</title>
+</head>
+
+<body>
+  <h1>{{ user }}</h1>
+  <form id="change_pass" action="/change/{{ user }}">
+    <button type="submit">Change Password</button>
+  </form>
+  <form id="delete" action="/delete/{{ user }}">
+    <button type="submit">Delete</button>
+  </form>
+</body>
+</html>

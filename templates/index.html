@@ -12,6 +12,11 @@
   {% else %}
     <p>{{ user }} LOGGED IN</p>
 	<p><a href="/logout">Logout</a></p>
+    {% if admin %}
+      <h2 id="admin_settings"><a href="/admin">Admin Settings</a></h2>
+    {% else %}
+      <h2 id="user_settings"><a href="/settings/{{ user }}">Settings</a></h2>
+	{% endif %}
   {% endif %}
 <body>
 </html>

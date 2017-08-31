@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Password Change</title>
+</head>
+<body>
+  <div id="change_pass">
+    <form action="/change/{{ user }}" method="post">
+      <p id="old_pass">Old Password:</p>
+      <input type="password" name="old_pass" id="old_pass">
+      <p id="password1">Password:</p>
+      <input type="password" name="password_one" id="password_one">
+      <p id="password2">Confirm Password</p>
+      <input type="password" name="password_two" id="password_two">
+      <br />
+      <button type="submit">Signup</button>
+    </form>
+  </div>
+</body>
+</html>

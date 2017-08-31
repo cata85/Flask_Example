@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Admin</title>
+</head>
+
+<body>
+  <h1>Admin Settings</h1>
+  <hr/>
+  {% for account in users %}
+    <p>Username: {{ account.1 }}<br/>Password: {{ account.2 }}</p>
+    <form id="delete" action="/delete/{{ account.1 }}">
+      <button type="submit">Delete</button>
+    </form>
+    <br/>
+  {% endfor %}
+</body>
+</html>

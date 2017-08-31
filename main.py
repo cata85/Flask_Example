@@ -9,7 +9,9 @@ app.secret_key = 'fjdksalfhup3502rt/5342afdsa'
 
 @app.route('/')
 def index():
-    return render_template('index.html', user=session.get('username'))
+    user = session.get('username')
+    admin = user == 'admin'
+    return render_template('index.html', user=user, admin=admin)
 
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -50,22 +52,39 @@ def logout():
     return redirect(url_for('index'))
 
 
-@app.route('/admin')
-def hello_admin():
-    return 'Hello Admin'
-
-
-@app.route('/guest/<guest>')
-def hello_guest(guest):
-    return 'Hello %s as Guest' % guest
-
-
-@app.route('/user/<name>')
-def hello_user(name):
-    if name == 'admin':
-        return redirect(url_for('hello_admin'))
+@app.route('/delete/<string:username>', methods=['GET', 'POST'])
+def delete(username):
+    user = session.get('username')
+    admin = user == 'admin'
+    if username != 'admin' and admin:
+        delete_user(username)
+        return redirect(url_for('admin'))
     else:
-        return redirect(url_for('hello_guest', guest=name))
+        if user == username:
+            session.pop('username')
+            delete_user(username)
+            return redirect(url_for('index'))
+        return redirect(url_for('settings', username=user))
+
+
+@app.route('/settings/<string:username>', methods=['GET', 'POST'])
+def settings(username):
+    user = session.get('username')
+    if user != username:
+        return redirect(url_for('settings', username=user))
+    return render_template('settings.html', user=user)
+
+
+@app.route('/admin', methods=['GET', 'POST'])
+def admin():
+    user = session.get('username')
+    admin = user == 'admin'
+    if admin:
+        users = get_all_users(user)
+        print(users)
+        return render_template('admin.html', users=users)
+    else:
+        return redirect(url_for('index'))
 
 
 if __name__ == '__main__':
